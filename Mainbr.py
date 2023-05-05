@@ -134,8 +134,8 @@ def ticket():
     ticket=tk.Tk()
     ticket.geometry("1200x800")
     
-##    inp=tk.Text(ticket,width=30,height=10,font="Arial 20")
-##    inp.grid(row=0, column=0)
+    inp=tk.Text(ticket,width=1200,height=800,font="Arial 20")
+    inp.pack(pady 50)
 ##    ticket.config(bg="black")
 ##    inp.insert(INSERT,name.get())
 ##    inp.insert(INSERT,age.get())
