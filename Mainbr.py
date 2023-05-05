@@ -80,16 +80,20 @@ def home():
     female_radio = tk.Radiobutton(home, text="Female",bg="white", variable=gender, value="Female")
     female_radio.grid(row=3, column=2)
 
-    from_label = tk.Label(home, text="From",bg="white")
+    frm_label = tk.Label(home, text="from",bg="white")
     
-    from_label.grid(row=5, column=0)    # 
-    from_entry = tk.Entry(home,textvariable=frm)
-    from_entry.grid(row=5, column=1)    
+    frm_label.grid(row=5, column=0)    # 
+##    frm_entry = tk.Entry(home,textvariable=frm)
+    From_dropdown = tk.OptionMenu(home, frm ,"DELHI","MUMBAI","JAIPUR","NAGPUR","AGRA","INDORE")
+    frm.set("Select A Boarding City")
+    From_dropdown.grid(row=5, column=1)    
 
     to_label = tk.Label(home, text="To",bg="white")
     to_label.grid(row=6, column=0)
-    to_entry = tk.Entry(home,textvariable=to)
-    to_entry.grid(row=6, column=1)
+##    to_entry = tk.Entry(home,textvariable=to)
+    to_dropdown = tk.OptionMenu(home, to ,"DELHI","MUMBAI","JAIPUR","NAGPUR","AGRA","INDORE")
+    to.set("Select Your Destination")
+    to_dropdown.grid(row=6, column=1)
 
     date_label = tk.Label(home, text="Date",bg="white")
     date_label.grid(row=7, column=0)
