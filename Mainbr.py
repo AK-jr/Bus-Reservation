@@ -1,6 +1,10 @@
-import random
 import tkinter as tk
+##from PIL import Image,ImageTk
+##from io import BytesIO
+##import requests
+
 def welcome():
+    
     
     welcome_window = tk.Tk()
     welcome_window.title("Welcome to Bus Reservation System")
@@ -8,6 +12,7 @@ def welcome():
     
     
     welcome_window.geometry("1200x800")
+    
     
     welcome_label = tk.Label(welcome_window, text="Welcome to Bus Reservation System!\n \n By-Aishwarya Kumar Singh\n \n XII-D\n \n Click on Enter to Continue", font=("Arial", 20))
     welcome_label.pack(pady=50)
@@ -135,7 +140,7 @@ def ticket():
     ticket.geometry("1200x800")
     
     inp=tk.Text(ticket,width=1200,height=800,font="Arial 20")
-    inp.pack(pady 50)
+    inp.pack(pady = 50)
 ##    ticket.config(bg="black")
 ##    inp.insert(INSERT,name.get())
 ##    inp.insert(INSERT,age.get())
