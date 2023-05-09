@@ -89,7 +89,7 @@ def home():
         
     def switch():
         home.destroy()
-        thankyou()
+        payment()
 
 
     name_label = tk.Label(home, text="Name",bg="white")
@@ -183,6 +183,58 @@ def home():
 
     home.mainloop()
 
+def payment():
+    
+    pay = tk.Tk()
+    pay.title("Payment System")
+    pay.config(bg="white")
+    pay.attributes('-fullscreen', True)
+
+    response = requests.get("https://img.freepik.com/premium-vector/bus-logo-abstract_7315-17.jpg")
+    img = Image.open(BytesIO(response.content))
+    img = img.resize((1350,800), Image.LANCZOS)
+    test = ImageTk.PhotoImage(img)
+    bk = tk.Label(image=test)
+    bk.image = test
+    bk.place(x=0, y=0)
+
+    
+    amount_label = tk.Label(pay, text=f" Total Amount: 700/- ")
+    amount_label.pack(pady=10)
+    
+    # Credit card number entry
+    card_label = tk.Label( pay,text="Enter Credit Card Number:")
+    card_label.pack()
+    pay.card_entry = tk.Entry( pay,show="*")
+    pay.card_entry.pack(pady=5)
+
+    # Expiration date entry
+    exp_label = tk.Label(pay, text=("Enter Expiration Date (MM/YY):"))
+    exp_label.pack()
+    pay.exp_entry = tk.Entry(pay)
+    pay.exp_entry.pack(pady=5)
+
+     # CVV number entry
+    cvv_label = tk.Label(pay, text="Enter CVV Number:")
+    cvv_label.pack()
+    pay.cvv_entry = tk.Entry( pay,show="*")
+    pay.cvv_entry.pack(pady=5)
+
+    def con():
+        pay.destroy()
+        thankyou()
+
+    continue_button=tk.Button(pay, text="CONTINUE",bg="GREEN",padx=70,pady=10,command=con)
+    continue_button.pack(pady=6)
+    
+    exitpay_button=tk.Button(pay, text="EXIT",bg="red",padx=70,pady=10,command=pay.destroy)
+    exitpay_button.pack(pady=8)   
+
+  
+    pay.mainloop()
+
+    
+
 #window for thanking customer For choosing us     
 
 def thankyou():
@@ -198,13 +250,12 @@ def thankyou():
     bk = tk.Label(image=test)
     bk.image = test
     bk.place(x=0, y=0)
-    Thx_label= tk.Label(thx_window,bg="white", text="THANK YOU FOR TRUSTING AK AGENCY\n\nYOUR TICKET WILL BE SEND ON YOUR\nENTERED MAIL AND PHONE NUMBER\n\n TOLL FREE NUMBER 1800 XXXXXX", font=("Arial", 20))
-    Thx_label.pack(pady=100)
+    Thx_label= tk.Label(thx_window,bg="white", text="PAYMENT SUCCESFULL \n\n\n THANK YOU FOR TRUSTING AK AGENCY\n\nYOUR TICKET WILL BE SEND ON YOUR\nENTERED MAIL AND PHONE NUMBER\n\n TOLL FREE NUMBER 1800 XXXXXX", font=("Arial", 20))
+    Thx_label.pack(pady=10)
     
     exitthx_button=tk.Button(thx_window, text="EXIT",bg="red",padx=70,pady=10,command=thx_window.destroy)
-    exitthx_button.pack(pady=150)
+    exitthx_button.pack(pady=15)
 
 
 #Calling function to Start The App    
 welcome()    
-
