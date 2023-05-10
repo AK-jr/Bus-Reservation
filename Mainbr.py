@@ -28,15 +28,87 @@ def welcome():
     def enter():
         welcome_window.destroy()    #defining function to switch windows
         home()
-                                            
+    def feedback():
+        welcome_window.destroy()
+        feedbackform()
     
     enter_button = tk.Button(welcome_window, text="Enter",padx=70,pady=15,bg="White" ,command=enter)
     enter_button.pack(pady=20)
     
+
+    feedback_button=tk.Button(welcome_window,text="Feedback Form",bg="blue",padx=70,pady=16,command=feedback)
+    feedback_button.pack(pady=25)
+
     exit_button=tk.Button(welcome_window,text="EXIT",bg="red",padx=30,pady=70,command=welcome_window.destroy)
     exit_button.pack(pady=200)
     welcome_window.mainloop()
 
+def feedbackform():
+        feed = tk.Tk()
+        feed.title("Feedback Form")
+        feed.attributes('-fullscreen', True)
+        feedback_title = tk.Label(feed, text="We'd love to hear your feedback!")
+        feedback_title.pack(pady=10)
+
+        response = requests.get("https://img.freepik.com/premium-vector/bus-logo-abstract_7315-17.jpg")
+        img = Image.open(BytesIO(response.content))
+        img = img.resize((1350,800), Image.LANCZOS)
+        test = ImageTk.PhotoImage(img)
+        bk = tk.Label(image=test)
+        bk.image = test
+        bk.place(x=0, y=0)
+
+        # Bus rating
+        bus_rating_label = tk.Label(feed, text="Bus Rating (1-5):")
+        bus_rating_label.pack()
+        feed.busrating_entry = tk.Entry(feed)
+        feed.busrating_entry.pack(pady=5)
+
+        # Driver rating
+        driver_rating_label = tk.Label(feed, text="Driver Rating (1-5):")
+        driver_rating_label.pack()
+        feed.driver_rating_entry = tk.Entry(feed)
+        feed.driver_rating_entry.pack(pady=5)
+
+        # Overall rating
+        overall_rating_label = tk.Label(feed, text="Overall Rating (1-5):")
+        overall_rating_label.pack()
+        feed.overall_rating_entry = tk.Entry(feed)
+        feed.overall_rating_entry.pack(pady=5)
+
+        # Feedback comments
+        feedback_comments_label = tk.Label(feed, text="Comments:")
+        feedback_comments_label.pack()
+        feed.feedback_comments_entry = tk.Text(feed, width=50, height=5)
+        feed.feedback_comments_entry.pack(pady=5)
+        def feedb():
+            feed.destroy()
+            feedsuccusful()
+
+        # Submit button
+        submit_button = tk.Button(feed, text="Submit Feedback", command=feedb)
+        submit_button.pack(pady=10)
+
+def feedsuccusful():
+    feeds = tk.Tk()
+    feeds.geometry("1200x800")
+    feeds.config(bg="white")
+    feeds.title("AK TRAVEL AGENCY ")
+    feeds.attributes('-fullscreen', True)
+    
+    response = requests.get("https://img.freepik.com/premium-vector/bus-logo-abstract_7315-17.jpg")
+    img = Image.open(BytesIO(response.content))
+    img = img.resize((1350,800), Image.LANCZOS)
+    test = ImageTk.PhotoImage(img)
+    bk = tk.Label(image=test)
+    bk.image = test
+    bk.place(x=0, y=0)
+    
+    feed_label= tk.Label(feeds,bg="white", text="Thank You For Giving Your Feed Back", font=("Arial", 28))
+    feed_label.pack(pady=10)
+    exit_button=tk.Button(feeds,text="EXIT",bg="red",padx=60,pady=20,command=feeds.destroy)
+    exit_button.pack(pady=50)
+    
 
 def home():
     
@@ -58,6 +130,7 @@ def home():
     
     label=tk.Label(home , text="WELCOME TO AK AGENCY",bg="red",font=("Arial",18))
     label.grid(row=0,column=7)
+    
     global name
     global age
     global gender
@@ -86,7 +159,6 @@ def home():
 
     
     
-        
     def switch():
         home.destroy()
         payment()
@@ -219,10 +291,12 @@ def payment():
     cvv_label.pack()
     pay.cvv_entry = tk.Entry( pay,show="*")
     pay.cvv_entry.pack(pady=5)
+    
 
     def con():
         pay.destroy()
         thankyou()
+        
 
     continue_button=tk.Button(pay, text="CONTINUE",bg="GREEN",padx=70,pady=10,command=con)
     continue_button.pack(pady=6)
@@ -243,6 +317,8 @@ def thankyou():
     thx_window.config(bg="white")
     thx_window.attributes('-fullscreen', True)    
     thx_window.geometry("1200x800")
+
+    
     response = requests.get("https://img.freepik.com/premium-vector/bus-logo-abstract_7315-17.jpg")
     img = Image.open(BytesIO(response.content))
     img = img.resize((1350,800), Image.LANCZOS)
